@@ -1,6 +1,6 @@
 #'hub' for analysis
 
-import math, numpy, pylab, re
+import math, numpy, re
 from line import mkline
 from sympy import *
 from mech import dist, perimiter, split, colinear
@@ -37,12 +37,14 @@ class impact:
         def shapecoef():
             # The closer shapecoef() is to 1, the more circular the blob
             return self.bigdiam / self.smalldiam
+            
         def meanthick():
             # So far unused, not sure if useful
             thicktot = 0
             for i in perimiter(self.coords):
                 thicktot += (self.bigline.dist2self(i))
             return thicktot /(0.5 * len(perimiter(self.coords)))
+            
         def diffthick():
             # A diffthick() close to 0 means a fairly uniform thickness
             big, small = 0, 256
@@ -52,6 +54,7 @@ class impact:
                 if thick > big: big = thick
                 if thick < small: small = thick
             return big - small
+            
         def curvature():      
             x,y = split(self.coords)
             coefs = numpy.polyfit(x,y,3)
