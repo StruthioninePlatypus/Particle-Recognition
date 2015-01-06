@@ -1,6 +1,6 @@
 #'hub' for analysis
 
-import math, numpy, pylab, re, os
+import math, numpy, pylab, re
 from line import mkline
 from sympy import *
 from mech import dist, perimiter, split, colinear
