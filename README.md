@@ -16,4 +16,8 @@ Add pixel intensity!!!
 
 Create function to calculate percentages of particles in frame
 
+Change bigdiam to radius from centroid(?)
+
+Perhaps include linear fit
+
 Other things...
