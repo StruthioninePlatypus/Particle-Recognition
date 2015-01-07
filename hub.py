@@ -91,3 +91,15 @@ class frame:
         for i in self.impacts:
             results[i.number] = i.analyse()
         return results
+        
+    def frequency(self):
+        # Crude frequency data - could be used for checking algorithm with Gaussian elimination later
+        p,b,a,g = 0,0,0,0
+        dat = self.classify()
+        for i in dat.keys():
+            print dat[i]
+            if dat[i] == 'proton': p += 1
+            if dat[i] == 'alpha': a += 1
+            if dat[i] == 'gamma': g += 1
+            if dat[i] == 'beta': b += 1
+        return a,b,g,p
