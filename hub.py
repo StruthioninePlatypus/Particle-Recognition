@@ -1,6 +1,6 @@
 #'hub' for analysis
 
-import math, numpy, re
+import math, numpy, re, pylab
 from line import mkline
 from sympy import *
 from mech import dist, perimiter, split, colinear
@@ -67,16 +67,28 @@ class impact:
             # This is an example of a branching algorithm.  The values used
             # here are fairly arbitrary.
             if shapecoef() < 2:
-                if self.bigdiam < 3: tipo = 'small dot'
-                else: tipo = 'large dot'
+                if self.bigdiam < 3: tipo = 'gamma'
+                else: tipo = 'alpha'
             else:
                 if curvature() < 0.1:
-                    if diffthick() < 2: tipo = 'straight, even'
-                    else: tipo = 'straight, comet'
-                elif curvature()< 0.5: tipo = 'curved'
-                else: tipo = 'very curved'
+                    if diffthick() < 2: tipo = 'proton'
+                    else: tipo = 'heavy ion'
+                elif curvature()< 0.7: tipo = 'beta'
+                else: tipo = 'erratic beta'
             return tipo
         return exampletree()
+        
+    def showthyself(self):
+        # Crude display for blob
+        pylab.figure()
+        x,y = split(self.coords)
+        pylab.plot(x,y,'ks')
+        cx,cy = self.centroid[0],self.centroid[1]
+        pylab.plot(cx,cy,'ro')
+        pylab.xlim([cx+40,cx-40])
+        pylab.ylim([cy+40,cy-40])
+        pylab.show()
+        
 
 class frame:
     
@@ -94,7 +106,7 @@ class frame:
         
     def frequency(self):
         # Crude frequency data - could be used for checking algorithm with Gaussian elimination later
-        p,b,a,g = 0,0,0,0
+        p,b,a,g,hi = 0,0,0,0,0
         dat = self.classify()
         for i in dat.keys():
             print dat[i]
@@ -102,4 +114,9 @@ class frame:
             if dat[i] == 'alpha': a += 1
             if dat[i] == 'gamma': g += 1
             if dat[i] == 'beta': b += 1
-        return a,b,g,p
+            if dat[i] == 'heavy ion': hi += 1
+        return a,b,g,hi,p
+
+    def display(self):
+        for i in self.impacts:
+            i.showthyself()
