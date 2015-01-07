@@ -12,6 +12,9 @@ class line:
             else: self.m = None
             # Need to code special case x = k
         self.c = self.a[1] - self.m *self.a[0]
+        
+    def extrms(self):
+        return [self.a,self.b]
 
     def ison(self,point):
         if point[1] == self.m*point[0] + self.c: return True
