@@ -12,12 +12,9 @@ This program can be used to analyse indivudual blobs (timepix particle tracks) o
 TO DO:
 ====================
 
+Add pixel intensity!!!
 Support file reading
-
 Fine-tune branching algorithm
-
 Perhaps implement k-means in n dimensions to check the results of branching algorithm?
-
 Create function to calculate percentages of particles in frame
-
 Other things...
