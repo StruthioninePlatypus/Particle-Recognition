@@ -15,7 +15,7 @@ Currently working on changes.
 TO DO:
 ====================
 
-Add pixel intensity!!!
+Integrate intensity functions into main algorithm
 
 Create function to calculate percentages of particles in frame
 
