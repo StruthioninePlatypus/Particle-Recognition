@@ -23,4 +23,6 @@ Change bigdiam to radius from centroid(?)
 
 Perhaps include linear fit
 
+Add anomaly detector
+
 Other things...
