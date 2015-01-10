@@ -1,3 +1,6 @@
+# These are some functions with pixel intensity integrated.  Each one takes a list of tupes of length 3,
+# with the 3rd element the intensity, e.g. [(1,1,32),(2,3,13)]
+
 from mech import *
 
 def maxEnPt(pts):
