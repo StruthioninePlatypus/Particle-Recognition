@@ -87,3 +87,5 @@ class impact:
         pylab.ylim([cy+40,cy-40])
         pylab.show()
 
+def mkimpact(pts,no):
+    return impact(pts,no)
