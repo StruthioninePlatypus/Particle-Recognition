@@ -1,11 +1,13 @@
-# class for metadata, needs work...        
+# class for metadata, needs work...    
+
+from impact import *
 
 class frame:
     
     def __init__(self, blobs):
         self.impacts, name = [], 1
         for i in blobs:
-            self.impacts.append(impact(i, name))
+            self.impacts.append(mkimpact(i, name))
             name += 1
             
     def classify(self):
