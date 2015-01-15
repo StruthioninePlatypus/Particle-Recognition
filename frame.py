@@ -35,17 +35,3 @@ class frame:
     def display(self):
         for i in self.impacts:
             i.showthyself()
-
-def filereader(f):
-    f,final = open(f),[]
-    while True:
-        try:
-            b = eval(f.readline())
-            final.append(b)
-        except:
-            break
-    return final
-    
-def autoanalyse(rawfile):
-    f = frame(filereader(rawfile))
-    print f.frequency()
