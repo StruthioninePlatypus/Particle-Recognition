@@ -25,7 +25,6 @@ class frame:
             if dat[i] == 'gamma': g += 1.0
             if dat[i] == 'beta': b += 1.0
             if dat[i] == 'heavy ion': h += 1.0
-        print p,a,g,b,h
         frtot = float(len(self.impacts))
         print 'There are', frtot, 'blobs in the frame'
         print round(g/frtot,2)*100, '% are gamma particles'
