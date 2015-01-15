@@ -35,3 +35,6 @@ class frame:
     def display(self):
         for i in self.impacts:
             i.showthyself()
+            
+def mkframe(bs):
+    return frame(bs)
