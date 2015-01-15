@@ -19,7 +19,6 @@ class frame:
         p,b,a,g,h = 0.0,0.0,0.0,0.0,0.0
         dat = self.classify()
         for i in dat.keys():
-            print dat[i]
             if dat[i] == 'proton': p += 1.0
             if dat[i] == 'alpha': a += 1.0
             if dat[i] == 'gamma': g += 1.0
