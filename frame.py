@@ -45,5 +45,7 @@ def filereader(f):
         except:
             break
     return final
-f =  frame(filereader('H:/vals.txt'))
-f.frequency()
+    
+def autoanalyse(rawfile):
+    f = frame(filereader(rawfile))
+    print f.frequency()
