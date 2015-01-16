@@ -31,48 +31,49 @@ class impact:
                     if dist(per[i],per[j]) < diameter: diameter = dist(per[i],per[j])
         self.smalldiam = diameter
 
-    def analyse(self):
-        def shapecoef():
-            # The closer shapecoef() is to 1, the more circular the blob
-            return self.bigdiam / self.smalldiam
+    
+    def shapecoef(self):
+        # The closer shapecoef() is to 1, the more circular the blob
+        return self.bigdiam / self.smalldiam
             
-        def meanthick():
-            # So far unused, not sure if useful
-            thicktot = 0
-            for i in perimiter(self.coords):
-                thicktot += (self.bigline.dist2self(i))
-            return thicktot /(0.5 * len(perimiter(self.coords)))
+    def meanthick(self):
+        # So far unused, not sure if useful
+        thicktot = 0
+        for i in perimiter(self.coords):
+            thicktot += (self.bigline.dist2self(i))
+        return thicktot /(0.5 * len(perimiter(self.coords)))
             
-        def diffthick():
-            # A diffthick() close to 0 means a fairly uniform thickness
-            big, small = 0, 256
-            for i in perimiter(self.coords):
-                if i in self.bigline.extrms(): continue
-                thick = self.bigline.dist2self(i)
-                if thick > big: big = thick
-                if thick < small: small = thick
-            return big - small
+    def diffthick(self):
+        # A diffthick() close to 0 means a fairly uniform thickness
+        big, small = 0, 256
+        for i in perimiter(self.coords):
+            if i in self.bigline.extrms(): continue
+            thick = self.bigline.dist2self(i)
+            if thick > big: big = thick
+            if thick < small: small = thick
+        return big - small
             
-        def curvature():      
-            x,y = split(self.coords)
-            coefs = numpy.polyfit(x,y,3)
-            x = Symbol('x')
-            poly = coefs[0]*(x**3) +coefs[1]*(x**2) + coefs[2]*x + coefs[3]
-            diffy =  poly.diff(x).diff(x).diff(x)
-            return abs(diffy)*100
-            
+    def curvature(self):      
+        x,y = split(self.coords)
+        coefs = numpy.polyfit(x,y,3)
+        x = Symbol('x')
+        poly = coefs[0]*(x**3) +coefs[1]*(x**2) + coefs[2]*x + coefs[3]
+        diffy =  poly.diff(x).diff(x).diff(x)
+        return abs(diffy)*100
+        
+    def analyse(self):     
         def exampletree():
             # This is an example of a branching algorithm.  The values used
             # here are fairly arbitrary.
-            if shapecoef() < 2:
+            if self.shapecoef() < 2:
                 if self.bigdiam < 3: tipo = 'gamma'
                 else: tipo = 'alpha'
             else:
-                if curvature() < 0.1:
-                    if diffthick() < 2: tipo = 'proton'
+                if self.curvature() < 0.1:
+                    if self.diffthick() < 2: tipo = 'proton'
                     else: tipo = 'heavy ion'
-                elif curvature()< 0.7: tipo = 'beta'
-                else: tipo = 'erratic beta'
+                elif self.curvature()< 0.7: tipo = 'beta'
+                else: tipo = 'beta'
             return tipo
         return exampletree()
         
