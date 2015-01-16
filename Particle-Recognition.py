@@ -16,6 +16,13 @@ def autoanalyse(rawfile):
     
 def deepanalyse(rawfile):
     f = mkframe(filereader(rawfile))
-    print f.analyse()
     # Need to implement some sort of visual analysis output
-    print f.frequency()
+    for i in f.impacts:
+        print i.analyse()
+
+f = raw_input('Enter file path >>> ')
+d = raw_input('Deep analysis? y or n >>> ')
+if d == 'y':
+    deepanalyse(f)
+else:
+    autoanalyse(f)
