@@ -15,14 +15,10 @@ Currently working on changes.
 TO DO:
 ====================
 
-Integrate intensity functions into main algorithm
+Intensity functions need to be integrated into main algorithm
 
-Create function to calculate percentages of particles in frame
+Fine tuning
 
-Change bigdiam to radius from centroid(?)
-
-Perhaps include linear fit
-
-Add anomaly detector
+Anomaly detector
 
 Other things...
