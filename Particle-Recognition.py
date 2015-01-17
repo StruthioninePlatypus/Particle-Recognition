@@ -1,5 +1,4 @@
 from frame import *
-from pretty import *
 
 def filereader(f):
     f,final = open(f),[]
