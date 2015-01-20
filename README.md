@@ -5,7 +5,7 @@ For the sake of a mildly amusing acronym:
 
 LABRAT (LAngton Blob Recognition and Analysis Toolkit)
 
-To use this code, download the zip and run Particle-Recognition.py in command line.  At the prompt, enter the path of
+To use this code, download the zip and run PR.py in command line.  At the prompt, enter the path of
 a .txt file containing lists of particle coordinates on separate lines
 
 ====================
