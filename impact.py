@@ -3,6 +3,25 @@ from line import mkline
 from sympy import *
 from mech import dist, perimiter, split, colinear
 
+def ittatpntceto(coords):
+    x,y = split(coords)
+    totx, toty = sum(x), sum(y)
+    cenx, ceny = totx / len(x), toty / len(y)
+    cent = (cenx, ceny) 
+    sma = 256
+    smack = None
+    for i in coords:
+        if dist(i,cent) < sma: 
+            sma = dist(i,cent)
+            smack = i
+    neigh = 0
+    for i in coords:
+        if abs(dist(i,smack)-1.0) <=0.1:
+            neigh += 1
+    if neigh < 3:
+        return True
+    return False
+
 class impact:
     
     def __init__(self, coords, number):
@@ -67,7 +86,8 @@ class impact:
             # here are fairly arbitrary.
             if self.shapecoef() < 2:
                 if self.bigdiam < 3: tipo = 'gamma'
-                else: tipo = 'alpha'
+                elif not(ittatpntceto(self.coords)): tipo = 'alpha'
+                else: tipo = 'beta'
             else:
                 if self.curvature() < 0.1:
                     if self.diffthick() < 2: tipo = 'proton'
