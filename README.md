@@ -1,1 +1,1 @@
-Currently working on plishing code and increasing usability.
+Currently working on polishing code and increasing usability.
